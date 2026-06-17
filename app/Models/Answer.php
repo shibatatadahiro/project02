@@ -11,4 +11,9 @@ class Answer extends Model
         'evaluation',
         'comment',
     ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }

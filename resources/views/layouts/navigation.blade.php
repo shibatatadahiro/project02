@@ -12,8 +12,14 @@
 
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                        {{ __('Dashboard') }}
+                    @php
+                        $dashboardRoute = auth()->user()->role === 'admin'
+                            ? route('admin.dashboard')
+                            : route('dashboard');
+                    @endphp
+
+                    <x-nav-link :href="$dashboardRoute" :active="request()->routeIs('admin.dashboard') || request()->routeIs('dashboard')">
+                        {{ __('ダッシュボード') }}
                     </x-nav-link>
                 </div>
             </div>
