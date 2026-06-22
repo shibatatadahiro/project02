@@ -16,7 +16,7 @@ class AnswerController extends Controller
     {
         $request->validate([
             'evaluation' => 'required|integer|min:1|max:5',
-            'comment' => 'nullable|string|max:255',
+            'comment' => 'required|string|max:255',
         ]);
 
         Answer::create([
